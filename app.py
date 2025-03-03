@@ -3,12 +3,10 @@ import pickle
 import numpy as np
 from flask_cors import CORS
 
-# Initialize Flask app
 app = Flask(__name__)
 
 CORS(app)
 
-# Load the saved model and scaler
 with open('diabetes_model.pkl', 'rb') as f:
     model = pickle.load(f)
 
@@ -16,7 +14,6 @@ with open('scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)
 
 
-# Define a prediction route
 @app.route('/predict', methods=['POST'])
 def predict_diabetes():
     try:
